@@ -7,7 +7,7 @@ const { validationResult } = require('express-validator/check');
 exports.getRepos =  async (req, res, next) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()) {
-            return res.status(403).json({message:"Status 403: Bad Request", errors: errors.array() });
+            return res.status(400).json({message:"Status 400: Bad Request", errors: errors.array() });
         }
 
         let username = req.params.username;
@@ -21,7 +21,7 @@ exports.getRepos =  async (req, res, next) => {
 exports.getRepoStats = async (req, res, next) => {
         const errors = validationResult(req);
         if(!errors.isEmpty()) {
-                return res.status(403).json({message:"Status 403: Bad Request", errors: errors.array() });
+                return res.status(400).json({message:"Status 400: Bad Request", errors: errors.array() });
         }
 
         let username = validateUsername(req.params.username);
